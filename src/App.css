@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Jumat Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Jumat Regular'), url('Jumat by 7NTypes.woff') format('woff');
+}
+
+h1{
+    font-family: "Jumat Regular", serif;
+    font-weight: 400;
+    color: #0ccac4;
+}
