@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/Robofriends/static/css/main.d43f7e57.chunk.css",
+    "main.js": "/Robofriends/static/js/main.8789e32b.chunk.js",
+    "main.js.map": "/Robofriends/static/js/main.8789e32b.chunk.js.map",
+    "runtime-main.js": "/Robofriends/static/js/runtime-main.bb8f2925.js",
+    "runtime-main.js.map": "/Robofriends/static/js/runtime-main.bb8f2925.js.map",
+    "static/css/2.6d7c7915.chunk.css": "/Robofriends/static/css/2.6d7c7915.chunk.css",
+    "static/js/2.a435606b.chunk.js": "/Robofriends/static/js/2.a435606b.chunk.js",
+    "static/js/2.a435606b.chunk.js.map": "/Robofriends/static/js/2.a435606b.chunk.js.map",
+    "static/js/3.210b94c2.chunk.js": "/Robofriends/static/js/3.210b94c2.chunk.js",
+    "static/js/3.210b94c2.chunk.js.map": "/Robofriends/static/js/3.210b94c2.chunk.js.map",
+    "index.html": "/Robofriends/index.html",
+    "static/css/2.6d7c7915.chunk.css.map": "/Robofriends/static/css/2.6d7c7915.chunk.css.map",
+    "static/css/main.d43f7e57.chunk.css.map": "/Robofriends/static/css/main.d43f7e57.chunk.css.map",
+    "static/js/2.a435606b.chunk.js.LICENSE.txt": "/Robofriends/static/js/2.a435606b.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/Robofriends/static/media/Jumat by 7NTypes.c5c2fd39.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bb8f2925.js",
+    "static/css/2.6d7c7915.chunk.css",
+    "static/js/2.a435606b.chunk.js",
+    "static/css/main.d43f7e57.chunk.css",
+    "static/js/main.8789e32b.chunk.js"
+  ]
+}
