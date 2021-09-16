@@ -1,64 +1,60 @@
-import React, {Component} from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
 import CardList from "./Components/CardList/CardList";
 import SearchBox from "./Components/SearchBox/SearchBox";
 import Scroll from "./Components/Scroll/Scroll";
-import ErrorBoundry from "./Components/ErrorBoundry/ErrorBoundry";
+import ErrorBoundary from "./Components/ErrorBoundry/ErrorBoundary";
+//Redux
+import {useSelector, useDispatch} from "react-redux";
+import {setSearchField} from "./actions/searchFieldAction";
+import {requestRobotsAction} from "./actions/requestRobotsAction";
 
-class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            robots: [],
-            searchField: '',
-            filteredRobots: []
-        }
-        this.onSearch = this.onSearch.bind(this);
+//Functional component using react hooks
+function App () {
+    const dispatch = useDispatch();
+    const searchField = useSelector(state => state.searchRobots.searchField);
+    const {robots} = useSelector(state => state.requestRobots)
+
+    useEffect(() => {
+        dispatch(requestRobotsAction())
+    }, []);
+
+    const onSearchChange = (event) => {
+        dispatch(setSearchField(event.target.value))
     }
 
-    /* another way to avoid binding in constructor is to change the event into an arrow function
-    * onSearch = (event) => {} then the binding in constructor can be removed
-    * */
-    onSearch(event) {
-        const robots = this.state.robots;
+    const filtered = robots.filter((string) => {
+        return string.name.toLowerCase().includes(searchField.toLowerCase());
+    });
 
-        const filteredRobots = robots.filter((string) => {
-            return string.name.toLowerCase().includes(event.target.value.toLowerCase());
-        });
-
-        this.setState({
-            searchFiled: event,
-            filteredRobots: filteredRobots
-        });
-    }
-
-    async componentDidMount() {
-        try {
-            const response = await fetch('https://jsonplaceholder.typicode.com/users');
-            const jsonData = await response.json();
-            this.setState({
-                robots: jsonData,
-                filteredRobots: jsonData
-            });
-        } catch (error) {
-            console.log(`Fetch Data error: ${error}`);
-        }
-    }
-
-    render() {
-        const {filteredRobots} = this.state;
-        return (
-            <div className='tc'>
-                <h1 className='f1'>RoboFriends</h1>
-                <SearchBox onSearch={this.onSearch}/>
-                <Scroll>
-                    <ErrorBoundry>
-                        <CardList robots={filteredRobots}/>
-                    </ErrorBoundry>
-                </Scroll>
-            </div>
-        );
-    }
+    return (
+        <div className='tc'>
+            <h1 className='f1'>RoboFriends</h1>
+            <SearchBox onSearch={onSearchChange}/>
+            <Scroll>
+                <ErrorBoundary>
+                    <CardList robots={filtered}/>
+                </ErrorBoundary>
+            </Scroll>
+        </div>
+    );
 }
 
 export default App;
+
+/*
+ this was used before applying redux
+ former method using hooks
+// getting promise warning more on this here
+        // https://reactjs.org/docs/hooks-faq.html#how-can-i-do-data-fetching-with-hooks
+        // https://www.robinwieruch.de/react-hooks-fetch-data
+        const fetchData = async () => {
+            try {
+                const response = await fetch('https://jsonplaceholder.typicode.com/users');
+                const jsonData = await response.json();
+                setRobots(jsonData);
+            }
+            catch (error) {console.log(`Fetch Data error: ${error}`);}
+        }
+        fetchData();
+*/
