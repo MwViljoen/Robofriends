@@ -17,7 +17,7 @@ function App () {
 
     useEffect(() => {
         dispatch(requestRobotsAction())
-    }, []);
+    }, [dispatch]);
 
     const onSearchChange = (event) => {
         dispatch(setSearchField(event.target.value))
